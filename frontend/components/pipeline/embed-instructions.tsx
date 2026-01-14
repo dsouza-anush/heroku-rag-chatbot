@@ -59,7 +59,7 @@ export function EmbedInstructions({ pipelineId }: EmbedInstructionsProps) {
         </div>
         <div className="space-y-2">
           <p className="text-xs text-muted-foreground">Iframe embed</p>
-          <pre className="bg-muted p-3 rounded-md text-xs overflow-x-auto whitespace-pre-wrap break-all">
+          <pre className="bg-muted p-3 rounded-md text-xs overflow-x-auto whitespace-pre">
             {iframeCode}
           </pre>
         </div>

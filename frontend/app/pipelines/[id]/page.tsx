@@ -119,7 +119,7 @@ export default function PipelinePage({ params }: PipelinePageProps) {
       <aside
         className={cn(
           'border-l border-border shrink-0 overflow-hidden flex flex-col transition-all duration-300 ease-in-out bg-card',
-          isRightSidebarCollapsed ? 'w-0' : 'w-80'
+          isRightSidebarCollapsed ? 'w-0' : 'hidden sm:block sm:w-80'
         )}
       >
         {!isRightSidebarCollapsed && (
@@ -184,7 +184,7 @@ export default function PipelinePage({ params }: PipelinePageProps) {
       <button
         type="button"
         onClick={toggleRightSidebar}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-5 h-10 bg-muted/50 border border-border border-r-0 rounded-l-md hover:bg-muted transition-colors"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-12 sm:w-5 sm:h-10 bg-muted/50 border border-border border-r-0 rounded-l-md hover:bg-muted transition-colors"
         aria-label={isRightSidebarCollapsed ? 'Show citations sidebar' : 'Hide citations sidebar'}
         aria-expanded={!isRightSidebarCollapsed}
       >

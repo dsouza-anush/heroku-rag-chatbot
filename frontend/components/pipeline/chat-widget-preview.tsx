@@ -35,8 +35,10 @@ export function ChatWidgetPreview({
       {isOpen && (
         <div
           className={cn(
-            'fixed bottom-6 right-6 z-50',
-            'w-[400px] h-[560px]',
+            'fixed z-50',
+            // Mobile: full screen with padding, Desktop: fixed size
+            'inset-4 sm:inset-auto sm:bottom-6 sm:right-6',
+            'sm:w-[400px] sm:h-[560px]',
             'flex flex-col overflow-hidden',
             'rounded-2xl border-2 border-border',
             'bg-card shadow-2xl',

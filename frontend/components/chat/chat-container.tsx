@@ -162,7 +162,7 @@ export function ChatContainer({ pipelineId, onSourcesChange, onLoadingChange, co
     <div className="flex h-full flex-col">
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto">
-        <div className={cn('mx-auto max-w-3xl px-4 lg:px-6', compact ? 'py-4' : 'py-8')}>
+        <div className={cn('mx-auto max-w-3xl px-3 sm:px-4 lg:px-6', compact ? 'py-4' : 'py-8')}>
           {messages.length === 0 && !streamingContent ? (
             <div className={cn('flex flex-col items-center justify-center text-center', compact ? 'py-8' : 'min-h-[60vh]')}>
               <div className={compact ? 'space-y-4' : 'space-y-8'}>
@@ -233,8 +233,8 @@ export function ChatContainer({ pipelineId, onSourcesChange, onLoadingChange, co
 
                         {/* Action buttons for assistant messages */}
                         {message.role === 'assistant' && (
-                          <div className="flex items-center gap-0.5 mt-3 -ml-1.5 opacity-0 group-hover/message:opacity-100 transition-opacity duration-200">
-                            <CopyButton content={message.content} className="size-7" />
+                          <div className="flex items-center gap-0.5 mt-3 -ml-1.5 opacity-100 sm:opacity-0 sm:group-hover/message:opacity-100 transition-opacity duration-200">
+                            <CopyButton content={message.content} className="size-9 sm:size-7" />
                           </div>
                         )}
 

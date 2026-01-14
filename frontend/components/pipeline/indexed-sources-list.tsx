@@ -104,7 +104,7 @@ export function IndexedSourcesList({
                         e.stopPropagation();
                         onDelete(item.url);
                       }}
-                      className="size-7 text-muted-foreground/50 hover:text-destructive hover:bg-destructive/10 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="size-9 sm:size-7 text-muted-foreground/50 hover:text-destructive hover:bg-destructive/10 shrink-0 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                     >
                       <Trash2Icon className="size-3.5" />
                     </Button>

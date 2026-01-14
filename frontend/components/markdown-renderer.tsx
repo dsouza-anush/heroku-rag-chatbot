@@ -71,12 +71,12 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
 
           // Lists with custom spacing
           ul: ({ children }) => (
-            <ul className="my-6 space-y-3 pl-8 list-disc marker:text-primary/70">
+            <ul className="my-6 space-y-3 pl-4 sm:pl-8 list-disc marker:text-primary/70">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="my-6 space-y-3 pl-8">
+            <ol className="my-6 space-y-3 pl-4 sm:pl-8">
               {children}
             </ol>
           ),
@@ -127,12 +127,12 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           ),
           tr: ({ children }) => <tr>{children}</tr>,
           th: ({ children }) => (
-            <th className="px-3 py-2 text-left text-xs font-semibold text-foreground uppercase tracking-wider">
+            <th className="px-2 sm:px-3 py-2 text-left text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="px-3 py-2 text-foreground">{children}</td>
+            <td className="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-foreground">{children}</td>
           ),
 
           // Horizontal rule

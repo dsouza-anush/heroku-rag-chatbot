@@ -430,7 +430,7 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
                   style={{ background: stringToGradient(pipeline.id) }}
                 />
                 {/* Title */}
-                <span className="text-sm font-medium text-foreground truncate max-w-[200px]">
+                <span className="text-sm font-medium text-foreground truncate max-w-[140px] sm:max-w-[200px]">
                   {pipeline.name}
                 </span>
                 {/* Chevron */}
@@ -470,10 +470,10 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
               </CardHeader>
               <CardContent className="space-y-3">
                 {/* Row 1: Source type dropdown + Input */}
-                <div className="flex gap-2">
-                  {/* Dropdown - fixed width */}
+                <div className="flex flex-col sm:flex-row gap-2">
+                  {/* Dropdown - full width on mobile, fixed on desktop */}
                   <Select value={sourceType} onValueChange={(v) => setSourceType(v as DataSourceType)}>
-                    <SelectTrigger className="w-[140px] shrink-0">
+                    <SelectTrigger className="w-full sm:w-[140px] shrink-0">
                       <SelectValue>
                         <div className="flex items-center gap-2">
                           <selectedSource.icon className="size-4" />
