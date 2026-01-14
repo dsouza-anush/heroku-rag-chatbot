@@ -1,0 +1,57 @@
+{
+  "name": "MIA - AI Documentation Assistant",
+  "description": "A RAG chatbot for documentation powered by Heroku AI - Cohere Embeddings, Cohere Rerank, Claude, and pgvector",
+  "repository": "https://github.com/dsouza-anush/heroku-rag-chatbot",
+  "keywords": ["rag", "chatbot", "ai", "heroku", "cohere", "claude", "pgvector", "nextjs"],
+  "stack": "heroku-24",
+  "addons": [
+    "heroku-postgresql:essential-0"
+  ],
+  "env": {
+    "INFERENCE_URL": {
+      "description": "Claude inference endpoint URL (from heroku-inference:claude-* addon)",
+      "required": true
+    },
+    "INFERENCE_KEY": {
+      "description": "Claude inference API key",
+      "required": true
+    },
+    "EMBEDDING_URL": {
+      "description": "Cohere Embeddings endpoint URL (from heroku-inference:cohere-embed-* addon)",
+      "required": true
+    },
+    "EMBEDDING_KEY": {
+      "description": "Cohere Embeddings API key",
+      "required": true
+    },
+    "RERANKING_URL": {
+      "description": "Cohere Rerank endpoint URL (from heroku-inference:cohere-rerank-* addon)",
+      "required": true
+    },
+    "RERANKING_KEY": {
+      "description": "Cohere Rerank API key",
+      "required": true
+    },
+    "AUTH_SECRET": {
+      "description": "NextAuth secret for session encryption",
+      "generator": "secret"
+    },
+    "NODE_ENV": {
+      "value": "production"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "scripts": {
+    "postdeploy": "cd frontend && npm run build"
+  }
+}
