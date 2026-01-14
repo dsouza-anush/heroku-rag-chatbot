@@ -8,7 +8,6 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
 } from '@/components/ui/card';
 import {
@@ -53,14 +52,14 @@ export function IndexedSourcesList({
                 <div className="size-8 rounded-lg bg-muted flex items-center justify-center">
                   <DatabaseIcon className="size-4 text-muted-foreground" />
                 </div>
-                <div>
-                  <CardDescription className="text-xs mb-0.5">
-                    {indexedUrls.length} source{indexedUrls.length !== 1 ? 's' : ''} · {totalChunks} chunks
-                  </CardDescription>
-                  <CardTitle className="text-base font-semibold tracking-tight">
-                    Indexed Sources
-                  </CardTitle>
-                </div>
+                <CardTitle className="text-base font-semibold tracking-tight">
+                  Indexed Sources
+                  {indexedUrls.length > 0 && (
+                    <span className="ml-2 text-xs font-normal text-muted-foreground">
+                      ({indexedUrls.length})
+                    </span>
+                  )}
+                </CardTitle>
               </div>
               <ChevronDownIcon
                 className={cn(

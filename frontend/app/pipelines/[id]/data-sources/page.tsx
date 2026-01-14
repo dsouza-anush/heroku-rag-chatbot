@@ -40,7 +40,6 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
 } from '@/components/ui/card';
 import {
@@ -466,12 +465,7 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
                   <div className="size-8 rounded-lg bg-muted flex items-center justify-center">
                     <span className="text-sm font-bold text-muted-foreground">1</span>
                   </div>
-                  <div>
-                    <CardDescription className="text-xs mb-0.5">
-                      Add a data source
-                    </CardDescription>
-                    <CardTitle className="text-base font-semibold tracking-tight">Index Documentation</CardTitle>
-                  </div>
+                  <CardTitle className="text-base font-semibold tracking-tight">Index Documentation</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -610,12 +604,7 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
                   <div className="size-8 rounded-lg bg-muted flex items-center justify-center">
                     <span className="text-sm font-bold text-muted-foreground">2</span>
                   </div>
-                  <div>
-                    <CardDescription className="text-xs mb-0.5">
-                      Test & embed
-                    </CardDescription>
-                    <CardTitle className="text-base font-semibold tracking-tight">Chatbot Widget</CardTitle>
-                  </div>
+                  <CardTitle className="text-base font-semibold tracking-tight">Chatbot Widget</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">

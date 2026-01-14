@@ -8,7 +8,6 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
 } from '@/components/ui/card';
 import {
@@ -106,14 +105,9 @@ export function ApiReferenceCard({ pipelineId }: ApiReferenceCardProps) {
                 <div className="size-8 rounded-lg bg-muted flex items-center justify-center">
                   <TerminalIcon className="size-4 text-muted-foreground" />
                 </div>
-                <div>
-                  <CardDescription className="text-xs mb-0.5">
-                    REST API
-                  </CardDescription>
-                  <CardTitle className="text-base font-semibold tracking-tight">
-                    API Reference
-                  </CardTitle>
-                </div>
+                <CardTitle className="text-base font-semibold tracking-tight">
+                  API Reference
+                </CardTitle>
               </div>
               <ChevronDownIcon
                 className={cn(
