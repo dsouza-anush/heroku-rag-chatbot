@@ -150,6 +150,12 @@ export async function indexUrlForPipeline(
 
 export async function getPipelineStatus(pipelineId: string): Promise<IndexStatus> {
   const response = await fetch(`${API_BASE}/api/pipelines/${pipelineId}/status`);
+
+  // Handle 404 gracefully - pipeline may not exist or was deleted
+  if (response.status === 404) {
+    return { indexed_urls: [], total_chunks: 0 };
+  }
+
   if (!response.ok) {
     throw new Error('Failed to fetch pipeline status');
   }
