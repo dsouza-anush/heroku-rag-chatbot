@@ -12,6 +12,32 @@ A RAG (Retrieval-Augmented Generation) chatbot for documentation, powered by **H
 - **Embeddable widget** - Add to your site with a simple script tag
 - **Real-time streaming** - See responses as they're generated
 
+## Screenshots
+
+### 1. Index Documentation
+
+Connect to multiple data sources including URLs, with support for Notion, Google Drive, Salesforce, Slack, and more coming soon.
+
+![Index Documentation](docs/images/index-documentation.png)
+
+### 2. RAG Pipeline
+
+Watch your documents flow through the full RAG pipeline: Fetch, Parse, Chunk, Embed, and Store in pgvector.
+
+![RAG Pipeline](docs/images/rag-pipeline.png)
+
+### 3. Embeddable Chatbot Widget
+
+Get an embeddable widget for your indexed documentation. Copy the iframe code or widget URL to add AI-powered search to any website.
+
+![Chatbot Widget](docs/images/chatbot-widget.png)
+
+### 4. Chat with Citations & Reranking
+
+Ask questions and get grounded answers with source citations. Toggle Cohere Rerank to improve retrieval precision.
+
+![Chat with Citations](docs/images/chat-with-citations.png)
+
 ## Heroku AI Primitives
 
 | Primitive | Purpose |
