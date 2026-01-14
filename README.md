@@ -1,6 +1,6 @@
 # MIA - AI Documentation Assistant
 
-A RAG (Retrieval-Augmented Generation) chatbot for documentation, powered by **Heroku AI primitives**.
+A sample implementation of a **managed AI search service** using RAG pipelines with **embeddings**, **reranking**, and **pgvector** - powered by Heroku Managed Inference.
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dsouza-anush/heroku-rag-chatbot)
 
