@@ -44,9 +44,9 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
   return (
     <div
       className={cn(
-        'markdown-body',
         'prose prose-neutral dark:prose-invert max-w-none',
         'prose-p:my-0 prose-pre:my-0',
+        'prose-strong:text-foreground prose-strong:font-semibold',
         'prose-code:before:hidden prose-code:after:hidden',
         'font-sans font-normal text-foreground',
         className
@@ -76,7 +76,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="my-6 space-y-3 pl-4 sm:pl-8">
+            <ol className="my-6 space-y-3 pl-4 sm:pl-8 list-decimal marker:font-semibold marker:text-primary/80">
               {children}
             </ol>
           ),
@@ -237,7 +237,7 @@ const InlineCode = memo(function InlineCode({ code }: { code: string }) {
   return (
     <code
       className={cn(
-        'inline rounded px-1 py-0.5 font-mono text-[0.85em]',
+        'inline rounded px-1 py-0.5 mx-[0.1em] font-mono text-[0.85em]',
         'bg-muted/50 text-foreground/85',
         'hover:bg-muted/70 transition-colors duration-150'
       )}

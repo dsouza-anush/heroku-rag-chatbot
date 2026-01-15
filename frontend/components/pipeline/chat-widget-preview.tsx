@@ -78,19 +78,21 @@ export function ChatWidgetPreview({
 
       {/* Minimized Floating Bubble */}
       {isActivated && !isOpen && (
-        <button
+        <Button
+          type="button"
           onClick={onOpen}
+          size="icon-lg"
           className={cn(
             'fixed bottom-6 right-6 z-50',
             'flex size-14 items-center justify-center',
-            'rounded-full bg-primary text-primary-foreground',
+            'rounded-full',
             'shadow-lg hover:shadow-xl',
             'hover:scale-105 active:scale-95',
             'transition-all duration-200 animate-scale-in'
           )}
         >
           <MiaLogo iconOnly className="size-6" />
-        </button>
+        </Button>
       )}
     </>
   );

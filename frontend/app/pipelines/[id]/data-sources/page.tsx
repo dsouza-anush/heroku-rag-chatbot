@@ -96,7 +96,6 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
   const selectedSource = DATA_SOURCES.find(s => s.value === sourceType) ?? DATA_SOURCES[0];
   const [url, setUrl] = useState('');
   const [indexedUrls, setIndexedUrls] = useState<IndexedUrl[]>([]);
-  const [totalChunks, setTotalChunks] = useState(0);
   const [isIndexing, setIsIndexing] = useState(false);
   const [indexingUrl, setIndexingUrl] = useState<string | null>(null);
   const [indexingProgress, setIndexingProgress] = useState<IndexProgress | null>(null);
@@ -208,7 +207,6 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
     try {
       const status = await getPipelineStatus(id);
       setIndexedUrls(status.indexed_urls || []);
-      setTotalChunks(status.total_chunks || 0);
       setPollErrorCount(0); // Reset on success
     } catch (err) {
       console.error('Failed to fetch status:', err);
@@ -326,7 +324,7 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
       }
 
       setUrl('');
-    } catch (err) {
+    } catch {
       setError('Failed to index URL');
     } finally {
       setIsIndexing(false);
@@ -624,7 +622,6 @@ export default function DataSourcesPage({ params }: DataSourcesPageProps) {
           {/* Row 2: Indexed Sources */}
           <IndexedSourcesList
             indexedUrls={indexedUrls}
-            totalChunks={totalChunks}
             onDelete={handleDelete}
           />
 

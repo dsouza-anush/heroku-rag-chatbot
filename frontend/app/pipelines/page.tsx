@@ -1,7 +1,6 @@
 'use client';
 
-import { PlusIcon, DatabaseIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { DatabaseIcon } from 'lucide-react';
 import { MiaLogo } from '@/components/icons/mia-logo';
 
 export default function PipelinesPage() {

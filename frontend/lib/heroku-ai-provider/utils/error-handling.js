@@ -72,6 +72,7 @@ function extractErrorMessage(errorResponse, metadata) {
  * Create enhanced error context with additional debugging information
  */
 function createErrorContext(status, errorResponse, metadata, url, _requestBody) {
+    void _requestBody;
     return {
         // Error classification
         errorType: metadata.type,

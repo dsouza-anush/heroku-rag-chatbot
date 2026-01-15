@@ -184,7 +184,6 @@ function isLikelyJunkContent(content: string, htmlLength: number): boolean {
 
 function extractLinks($: cheerio.CheerioAPI, baseUrl: string): string[] {
   const links: string[] = [];
-  const base = new URL(baseUrl);
 
   $("a[href]").each((_, el) => {
     const href = $(el).attr("href");

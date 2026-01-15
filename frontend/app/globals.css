@@ -19,21 +19,6 @@ html {
   letter-spacing: -0.02em;
 }
 
-/* Glass effect utilities */
-@utility glass {
-  background: oklch(from var(--background) l c h / 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-@utility no-scrollbar {
-  &::-webkit-scrollbar {
-    display: none !important;
-  }
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-
 /* MIA color palette - Light mode (oklch for perceptual uniformity) */
 /* Softer off-white backgrounds with subtle warm tint */
 :root {
@@ -185,7 +170,7 @@ html {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 no-scrollbar!;
+    @apply border-border outline-ring/50;
   }
 
   body {
@@ -343,98 +328,6 @@ html {
 }
 
 /* ========================================
-   MARKDOWN BODY STYLES
-   ======================================== */
-
-@layer utilities {
-  /* Enhanced ordered list styling with CSS counters */
-  .markdown-body ol {
-    counter-reset: item;
-    list-style-type: none;
-  }
-
-  .markdown-body ol > li {
-    counter-increment: item;
-    position: relative;
-  }
-
-  .markdown-body ol > li::before {
-    content: counter(item) '.';
-    font-weight: 600;
-    color: hsl(var(--primary));
-    position: absolute;
-    left: -1.75em;
-    width: 1.5em;
-    text-align: right;
-  }
-
-  /* Unordered list marker styling */
-  .markdown-body ul > li::marker {
-    color: hsl(var(--primary) / 0.7);
-  }
-
-  /* Nested list spacing */
-  .markdown-body ol > li > ol,
-  .markdown-body ul > li > ul,
-  .markdown-body ol > li > ul,
-  .markdown-body ul > li > ol {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  /* List item paragraph spacing */
-  .markdown-body li > p {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Heading differentiation */
-  .markdown-body h1,
-  .markdown-body h2,
-  .markdown-body h3 {
-    line-height: 1.3;
-    color: hsl(var(--foreground));
-  }
-
-  .markdown-body h1 {
-    letter-spacing: -0.02em;
-  }
-
-  .markdown-body h2 {
-    letter-spacing: -0.015em;
-  }
-
-  /* Strong/bold visibility */
-  .markdown-body strong {
-    font-weight: 700;
-    color: hsl(var(--foreground));
-  }
-
-  /* HR styling */
-  .markdown-body hr {
-    margin: 2rem 0;
-    border: none;
-    border-top: 1px solid hsl(var(--border));
-    opacity: 0.5;
-  }
-
-  /* Inline code spacing in paragraphs */
-  .markdown-body p > code,
-  .markdown-body li > code {
-    margin: 0 0.1em;
-  }
-
-  /* Blockquote spacing */
-  .markdown-body blockquote > *:first-child {
-    margin-top: 0;
-  }
-
-  .markdown-body blockquote > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-/* ========================================
    SUGAR-HIGH SYNTAX HIGHLIGHTING
    ======================================== */
 
@@ -461,4 +354,3 @@ html {
   --sh-sign: oklch(0.7 0.04 250);
   --sh-comment: oklch(0.55 0.03 250);
 }
-

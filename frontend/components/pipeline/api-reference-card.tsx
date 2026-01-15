@@ -40,9 +40,9 @@ interface ApiReferenceCardProps {
 }
 
 const METHOD_COLORS: Record<string, string> = {
-  GET: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  POST: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-  DELETE: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  GET: 'bg-success/15 text-success',
+  POST: 'bg-primary/15 text-primary',
+  DELETE: 'bg-destructive/15 text-destructive',
 };
 
 /**

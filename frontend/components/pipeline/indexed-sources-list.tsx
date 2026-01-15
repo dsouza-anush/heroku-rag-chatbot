@@ -19,7 +19,6 @@ import { cn } from '@/lib/utils';
 
 interface IndexedSourcesListProps {
   indexedUrls: IndexedUrl[];
-  totalChunks: number;
   onDelete: (url: string) => void;
 }
 
@@ -28,7 +27,6 @@ interface IndexedSourcesListProps {
  */
 export function IndexedSourcesList({
   indexedUrls,
-  totalChunks,
   onDelete,
 }: IndexedSourcesListProps) {
   const [isOpen, setIsOpen] = useState(false);

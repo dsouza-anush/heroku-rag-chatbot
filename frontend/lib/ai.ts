@@ -21,10 +21,6 @@ function getHeroku() {
   return _heroku;
 }
 
-function getEmbeddingModel() {
-  return getHeroku().embedding("cohere-embed-multilingual");
-}
-
 function getRerankingModel() {
   return getHeroku().reranking("cohere-rerank-3-5");
 }

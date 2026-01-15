@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface SuggestionButtonProps {
@@ -21,19 +22,20 @@ export function SuggestionButton({
   className,
 }: SuggestionButtonProps) {
   return (
-    <button
+    <Button
       type="button"
       onClick={onClick}
+      variant="outline"
+      size={size === 'sm' ? 'sm' : 'default'}
       className={cn(
-        'rounded-lg border border-border bg-card text-foreground',
-        'transition-all duration-200',
-        'hover:bg-accent hover:text-accent-foreground hover:scale-[1.02]',
+        'rounded-lg bg-card shadow-none',
+        'hover:bg-accent hover:text-accent-foreground',
         'active:scale-[0.98]',
-        size === 'sm' ? 'px-3 py-1.5 text-xs' : 'px-4 py-2.5 text-sm',
+        size === 'sm' ? 'px-3 text-xs' : 'px-4 text-sm',
         className
       )}
     >
       {children}
-    </button>
+    </Button>
   );
 }

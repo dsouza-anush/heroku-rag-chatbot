@@ -122,7 +122,7 @@ export function DataSources({
         setIndexingUrl(null);
       }
       setUrl('');
-    } catch (err) {
+    } catch {
       setError('Failed to start indexing');
       setIsIndexing(false);
       setIndexingUrl(null);

@@ -10,6 +10,7 @@ import { CitationsPanel } from '@/components/citations/citations-panel';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const RIGHT_SIDEBAR_STORAGE_KEY = 'heroku-ai-search-right-sidebar';
@@ -181,10 +182,12 @@ export default function PipelinePage({ params }: PipelinePageProps) {
       </aside>
 
       {/* Toggle Button - Fixed position */}
-      <button
+      <Button
         type="button"
         onClick={toggleRightSidebar}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-12 sm:w-5 sm:h-10 bg-muted/50 border border-border border-r-0 rounded-l-md hover:bg-muted transition-colors"
+        variant="ghost"
+        size="icon"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex w-10 h-12 sm:w-5 sm:h-10 items-center justify-center bg-muted/50 border border-border border-r-0 rounded-l-md hover:bg-muted transition-colors"
         aria-label={isRightSidebarCollapsed ? 'Show citations sidebar' : 'Hide citations sidebar'}
         aria-expanded={!isRightSidebarCollapsed}
       >
@@ -193,7 +196,7 @@ export default function PipelinePage({ params }: PipelinePageProps) {
         ) : (
           <ChevronRightIcon className="size-4 text-muted-foreground" />
         )}
-      </button>
+      </Button>
     </div>
   );
 }
