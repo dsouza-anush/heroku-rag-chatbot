@@ -64,7 +64,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
 
           // Paragraph
           p: ({ children }) => (
-            <p className="text-[15px] leading-relaxed text-foreground/90 my-3">
+            <p className="text-body text-foreground/90 my-3">
               {children}
             </p>
           ),
@@ -81,7 +81,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             </ol>
           ),
           li: ({ children }) => (
-            <li className="pl-2 text-[15px] leading-relaxed text-foreground/90">
+            <li className="pl-2 text-body text-foreground/90">
               {children}
             </li>
           ),
@@ -94,7 +94,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
 
           // Blockquote styling
           blockquote: ({ children }) => (
-            <blockquote className="my-3 border-l-2 border-border/40 pl-3 text-[14px] leading-relaxed text-muted-foreground">
+            <blockquote className="my-3 border-l-2 border-border/40 pl-3 text-body-sm text-muted-foreground">
               {children}
             </blockquote>
           ),
@@ -127,7 +127,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           ),
           tr: ({ children }) => <tr>{children}</tr>,
           th: ({ children }) => (
-            <th className="px-2 sm:px-3 py-2 text-left text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider">
+            <th className="px-2 sm:px-3 py-2 text-left text-2xs sm:text-xs font-semibold text-foreground uppercase tracking-wider">
               {children}
             </th>
           ),

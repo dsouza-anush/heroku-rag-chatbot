@@ -1,17 +1,10 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState } from 'react';
 import { Loader2, AlertCircle, Database, ChevronDown, X } from 'lucide-react';
-import {
-  indexUrlForPipeline,
-  getPipelineStatus,
-  getPipelineIndexProgress,
-  deletePipelineIndexedUrl,
-  IndexedUrl,
-  IndexProgress,
-} from '@/lib/api';
+import { type IndexedUrl } from '@/lib/api';
 import { cn, getDomain, isValidHttpUrl } from '@/lib/utils';
-import { POLL_INTERVAL_INDEXING_MS, POLL_INTERVAL_IDLE_MS } from '@/lib/constants/polling';
+import { usePipelineIndexing } from '@/hooks/use-pipeline-indexing';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -34,72 +27,30 @@ export function DataSources({
   onStatusChange
 }: DataSourcesProps) {
   const [url, setUrl] = useState('');
-  // Use props if provided, otherwise maintain local state with polling
-  const [localIndexedUrls, setLocalIndexedUrls] = useState<IndexedUrl[]>([]);
-  const [localTotalChunks, setLocalTotalChunks] = useState(0);
-  const [isIndexing, setIsIndexing] = useState(false);
-  const [indexingUrl, setIndexingUrl] = useState<string | null>(null);
-  const [indexingProgress, setIndexingProgress] = useState<IndexProgress | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const isPropsMode = propsIndexedUrls !== undefined;
+
+  const {
+    indexedUrls: localIndexedUrls,
+    totalChunks: localTotalChunks,
+    isIndexing,
+    indexingUrl,
+    indexingProgress,
+    error,
+    setError,
+    startIndexing,
+    deleteUrl,
+  } = usePipelineIndexing({
+    pipelineId,
+    clearIndexingOnResponse: false,
+    statusPolling: { enabled: !isPropsMode, useBackoff: false },
+    onStatusChange: isPropsMode ? undefined : onStatusChange,
+  });
 
   // Determine which data to use
   const indexedUrls = propsIndexedUrls ?? localIndexedUrls;
   const totalChunks = propsTotalChunks ?? localTotalChunks;
-  const isPropsMode = propsIndexedUrls !== undefined;
-
-  const fetchStatus = useCallback(async () => {
-    // Skip if parent provides data via props
-    if (isPropsMode || !pipelineId) return;
-    try {
-      const status = await getPipelineStatus(pipelineId);
-      setLocalIndexedUrls(status.indexed_urls || []);
-      setLocalTotalChunks(status.total_chunks || 0);
-      onStatusChange?.();
-    } catch (err) {
-      console.error('Failed to fetch status:', err);
-    }
-  }, [pipelineId, onStatusChange, isPropsMode]);
-
-  // Use ref to avoid stale closure
-  const fetchStatusRef = useRef(fetchStatus);
-  useEffect(() => { fetchStatusRef.current = fetchStatus; }, [fetchStatus]);
-
-  // Only poll if NOT in props mode
-  useEffect(() => {
-    if (isPropsMode) return;
-    fetchStatusRef.current();
-    const interval = setInterval(() => fetchStatusRef.current(), POLL_INTERVAL_IDLE_MS);
-    return () => clearInterval(interval);
-  }, [isPropsMode]);
-
-  useEffect(() => {
-    if (!indexingUrl || !pipelineId) return;
-
-    const checkProgress = async () => {
-      try {
-        const progress = await getPipelineIndexProgress(pipelineId, indexingUrl);
-        setIndexingProgress(progress);
-
-        if (progress.status === 'complete' || progress.status === 'error') {
-          setIsIndexing(false);
-          setIndexingUrl(null);
-          setIndexingProgress(null);
-          // Trigger refresh - either parent or local
-          if (onRefresh) {
-            onRefresh();
-          } else {
-            fetchStatusRef.current();
-          }
-        }
-      } catch (err) {
-        console.error('Failed to check progress:', err);
-      }
-    };
-
-    const interval = setInterval(checkProgress, POLL_INTERVAL_INDEXING_MS);
-    return () => clearInterval(interval);
-  }, [indexingUrl, pipelineId, onRefresh]);
 
   const handleIndex = async () => {
     if (!url.trim() || !pipelineId) return;
@@ -110,38 +61,18 @@ export function DataSources({
       return;
     }
 
-    setError(null);
-    setIsIndexing(true);
-    setIndexingUrl(url);
-
-    try {
-      const result = await indexUrlForPipeline(pipelineId, url.trim());
-      if (result.status === 'error') {
-        setError(result.message);
-        setIsIndexing(false);
-        setIndexingUrl(null);
-      }
+    const result = await startIndexing(url.trim(), { refreshStatus: !isPropsMode });
+    if (result) {
       setUrl('');
-    } catch {
-      setError('Failed to start indexing');
-      setIsIndexing(false);
-      setIndexingUrl(null);
+    }
+    if (result?.status === 'complete') {
+      onRefresh?.();
     }
   };
 
   const handleDelete = async (urlToDelete: string) => {
-    if (!pipelineId) return;
-    try {
-      await deletePipelineIndexedUrl(pipelineId, urlToDelete);
-      // Trigger refresh - either parent or local
-      if (onRefresh) {
-        onRefresh();
-      } else {
-        fetchStatusRef.current();
-      }
-    } catch (err) {
-      console.error('Failed to delete:', err);
-    }
+    await deleteUrl(urlToDelete, { refreshStatus: !isPropsMode });
+    onRefresh?.();
   };
 
   return (

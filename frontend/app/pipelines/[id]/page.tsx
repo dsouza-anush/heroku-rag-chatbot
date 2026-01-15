@@ -170,7 +170,7 @@ export default function PipelinePage({ params }: PipelinePageProps) {
             </div>
 
             {/* Citations Section */}
-            <div className="border-t border-border flex-1 min-h-[200px] overflow-hidden">
+            <div className="border-t border-border flex-1 min-h-52 overflow-hidden">
               <CitationsPanel
                 sources={sources}
                 isLoading={isChatLoading}

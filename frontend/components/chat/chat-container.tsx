@@ -253,7 +253,7 @@ export function ChatContainer({ pipelineId, onSourcesChange, onLoadingChange, co
                                   className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-muted hover:bg-muted-foreground/10 border border-border text-xs transition-colors"
                                 >
                                   <span className="font-medium text-secondary">[{i + 1}]</span>
-                                  <span className="truncate max-w-[120px] text-foreground">{source.title || 'Source'}</span>
+                                  <span className="truncate max-w-32 text-foreground">{source.title || 'Source'}</span>
                                 </a>
                               ))}
                             </div>
@@ -305,7 +305,7 @@ export function ChatContainer({ pipelineId, onSourcesChange, onLoadingChange, co
               placeholder="Ask anything about your indexed docs..."
               disabled={isLoading}
               rows={1}
-              className="w-full resize-none bg-transparent px-4 pt-3 pb-12 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-50 min-h-[60px] max-h-[200px]"
+              className="w-full resize-none bg-transparent px-4 pt-3 pb-12 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-50 min-h-16 max-h-52"
             />
             <div className="absolute bottom-2.5 right-2.5">
               <Button

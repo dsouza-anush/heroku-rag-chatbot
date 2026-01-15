@@ -17,7 +17,7 @@ export default function PipelinesPage() {
           </p>
         </div>
         <div className="flex flex-col gap-3 pt-4">
-          <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card text-left min-h-[76px]">
+          <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card text-left min-h-20">
             <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
               <DatabaseIcon className="size-5 text-primary" />
             </div>
@@ -26,7 +26,7 @@ export default function PipelinesPage() {
               <p className="text-sm text-muted-foreground">Add URLs to crawl and index into vector storage</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card text-left min-h-[76px]">
+          <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-card text-left min-h-20">
             <div className="size-10 rounded-lg bg-secondary/15 flex items-center justify-center shrink-0">
               <MiaLogo iconOnly className="size-5 text-secondary" />
             </div>

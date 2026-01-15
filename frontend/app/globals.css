@@ -19,6 +19,21 @@ html {
   letter-spacing: -0.02em;
 }
 
+@utility text-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@utility text-body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@utility text-2xs {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+}
+
 /* MIA color palette - Light mode (oklch for perceptual uniformity) */
 /* Softer off-white backgrounds with subtle warm tint */
 :root {

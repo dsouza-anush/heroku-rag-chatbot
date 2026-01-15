@@ -136,7 +136,7 @@ export function ApiReferenceCard({ pipelineId }: ApiReferenceCardProps) {
                       <Badge
                         variant="secondary"
                         className={cn(
-                          'font-mono text-[10px] px-1.5 py-0 shrink-0',
+                          'font-mono text-2xs px-1.5 py-0 shrink-0',
                           METHOD_COLORS[endpoint.method]
                         )}
                       >
