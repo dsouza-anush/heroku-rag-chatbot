@@ -27,7 +27,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.3.1",
     "geist": "^1.5.1",
-    "heroku-ai-provider": "file:../../heroku-ai-provider",
+    "heroku-ai-provider": "^0.6.0",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "next-auth": "^5.0.0-beta.30",

@@ -1,4 +1,4 @@
-import { createHerokuAI } from "./heroku-ai-provider/index.js";
+import { createHerokuAI } from "heroku-ai-provider";
 import { streamText, generateText } from "ai";
 
 // Lazy-load provider and models to avoid build-time errors
